@@ -22,9 +22,12 @@ const server = express();
 connectToDB();
 
 // middlewares
+
+const allowedOrigins = [process.env.ORIGIN, "http://localhost:3000"];
+
 server.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: allowedOrigins,
     credentials: true,
     exposedHeaders: ["X-Total-Count"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
